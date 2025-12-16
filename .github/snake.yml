@@ -2,9 +2,9 @@ name: Generate Snake Animation
 
 on:
   schedule:
-    # Every 12 hours
+    # Toutes les 12 heures
     - cron: "0 */12 * * *"
-  workflow_dispatch:
+  workflow_dispatch:  # Pour lancer manuellement
   push:
     branches:
       - main
@@ -13,7 +13,7 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Generate snake animation
@@ -29,7 +29,7 @@ jobs:
       - name: Show generated files
         run: git status
 
-      - name: Push to output branch
+      - name: Deploy to output branch
         uses: crazy-max/ghaction-github-pages@v4
         with:
           target_branch: output
